@@ -1,0 +1,32 @@
+.nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: solid 2px grey;
+  padding: 15px;
+
+  a{
+    border: solid 3px black;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 7px;
+    color: black;
+    text-decoration: none;
+  }
+  a:hover{
+    box-shadow: 3px 5px 5px rgb(38, 181, 178);
+  }
+
+  img{
+    height: 45px;
+  }
+  h6{
+    margin: 0px;
+  }
+  h1{
+    margin: 0px;
+  }
+  .nav-title{
+    margin-left: 10px;
+  }
+}
