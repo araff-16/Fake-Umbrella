@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/Services/http.service';
+import { Customer } from 'src/app/Models/Customer';
 
 @Component({
   selector: 'app-customers',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomersComponent implements OnInit {
 
-  constructor() { }
+  customers: Customer[];
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getRequest('http://localhost:3000/customers')
+    .subscribe((data) => {
+      this.customers = data
+      console.log(this.customers)
+    })
   }
 
 }

@@ -1,1 +1,14 @@
-<p>customers works!</p>
+<div class="customers">
+  <div class="title-customer">
+    <h2>Customers</h2>
+  </div>
+  <div *ngFor = "let customer of customers; let i = index;" class="customer">
+    <h1>{{customer.company}}</h1>
+    <h4>Contact: {{customer.contact}}</h4>
+    <h4>Telephone: {{customer.telephone}}</h4>
+    <h4>Location: {{customer.address +", "+ customer.city+ ", " + customer.province + " " + customer.postal }} </h4>
+    <h4>Number of Employees: {{customer.employees}}</h4>
+    <button class="delete" (click)="deleteCustomer(i)">Remove</button>
+    <button class="update" (click)="addcustomer()">Update</button>
+  </div>
+</div>
