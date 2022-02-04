@@ -20,4 +20,10 @@ export class CustomersComponent implements OnInit {
     })
   }
 
+  deleteCustomer (id:number) {
+    this.httpService.deleteRequest(`http://localhost:3000/customers/${id}`).subscribe(() => {
+      this.customers = this.customers.filter((customer, i) => i !== id)
+    })
+  }
+
 }

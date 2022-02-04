@@ -11,6 +11,9 @@ export class CustomersService {
   getCustomers() {
     return [...this.customers];
   }
+  deleteCustomer(id: number) {
+    this.customers = this.customers.filter((customer, i) => i !== id);
+  }
   insertCustomer(
     company: string,
     contact: string,
