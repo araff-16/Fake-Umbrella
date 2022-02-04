@@ -1,1 +1,19 @@
-<p>raining-info works!</p>
+<div *ngIf="loading">
+  <h1>LOADING...</h1>
+</div>
+
+<div *ngFor = "let customer of rainingCustomers;" class="customer">
+  <div>
+    <h1>{{customer.company}}</h1>
+    <h4>Contact: {{customer.contact}}</h4>
+    <h4>Telephone: {{customer.telephone}}</h4>
+  </div>
+
+  <div>
+    <h4>Raining Days</h4>
+    <ol >
+     <li *ngFor = "let day of customer.rainydays;">{{day}}</li>
+    </ol>
+  </div>
+
+</div>
