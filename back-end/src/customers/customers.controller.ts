@@ -74,4 +74,14 @@ export class CustomersController {
   deleteCustomer(@Param('id') id: string) {
     return this.customersService.deleteCustomer(parseInt(id));
   }
+
+  @Get('/raining')
+  getraining() {
+    return this.customersService.getRaining();
+  }
+
+  @Get('/topfour')
+  getTopFour() {
+    return this.customersService.getTopFour();
+  }
 }
