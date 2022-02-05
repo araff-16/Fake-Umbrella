@@ -24,7 +24,6 @@ export class InputCustomerComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.id)
     if (this.id !== undefined) {
       this.httpService.putRequest(`http://localhost:3000/customers/${this.id}`, this.customerModel)
         .subscribe(() => {
@@ -37,7 +36,6 @@ export class InputCustomerComponent implements OnInit {
           this.router.navigateByUrl('/customers')
         })
     }
-
   }
 
 }

@@ -1,62 +1,66 @@
 <h2 *ngIf="id === undefined" >Add Customer</h2>
 <h2 *ngIf="id !== undefined" >Update Customer Info</h2>
 
-<form #customerForm="ngForm" (ngSubmit)= "onSubmit()" novalidate>
+<div class="form-container">
+  <form #customerForm="ngForm" (ngSubmit)= "onSubmit()" novalidate>
 
-  <div class="form-group">
-    <label  for="company">Company Name</label>
-    <input required ngModel name="company" #company="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.company">
-    <div class="alert" *ngIf="company.touched && !company.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="company">Company Name</label>
+      <input required ngModel name="company" #company="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.company">
+      <div class="alert" *ngIf="company.touched && !company.valid">Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="contact">Contact Person</label>
-    <input required ngModel name="contact" #contact="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.contact">
-    <div class="alert" *ngIf="contact.touched && !contact.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="contact">Contact Person</label>
+      <input required ngModel name="contact" #contact="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.contact">
+      <div class="alert" *ngIf="contact.touched && !contact.valid">Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="telephone">Contact Phone Number</label>
-    <input required ngModel name="telephone" #telephone="ngModel"type="text" class="form-control" [(ngModel)]="customerModel.telephone">
-    <div class="alert" *ngIf="telephone.touched && !telephone.valid" >Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="telephone">Contact Phone Number</label>
+      <input required ngModel name="telephone" #telephone="ngModel"type="text" class="form-control" [(ngModel)]="customerModel.telephone">
+      <div class="alert" *ngIf="telephone.touched && !telephone.valid" >Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="city">City</label>
-    <input required ngModel name="city" #city="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.city">
-    <div class="alert" *ngIf="city.touched && !city.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="city">City</label>
+      <input required ngModel name="city" #city="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.city">
+      <div class="alert" *ngIf="city.touched && !city.valid">Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="province">Province</label>
-    <input required ngModel name="province" #province="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.province">
-    <div class="alert" *ngIf="province.touched && !province.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="province">Province</label>
+      <input required ngModel name="province" #province="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.province">
+      <div class="alert" *ngIf="province.touched && !province.valid">Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="country">Country</label>
-    <input required ngModel name="country" #country="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.country">
-    <div class="alert" *ngIf="country.touched && !country.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="country">Country</label>
+      <input required ngModel name="country" #country="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.country">
+      <div class="alert" *ngIf="country.touched && !country.valid">Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="address">Address</label>
-    <input required ngModel name="address" #address="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.address">
-    <div class="alert" *ngIf="address.touched && !address.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="address">Address</label>
+      <input required ngModel name="address" #address="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.address">
+      <div class="alert" *ngIf="address.touched && !address.valid">Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="postal">Postal Code</label>
-    <input required ngModel name="postal" #postal="ngModel"type="text" class="form-control" [(ngModel)]="customerModel.postal">
-    <div class="alert" *ngIf="postal.touched && !postal.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="postal">Postal Code</label>
+      <input required ngModel name="postal" #postal="ngModel"type="text" class="form-control" [(ngModel)]="customerModel.postal">
+      <div class="alert" *ngIf="postal.touched && !postal.valid">Required</div>
+    </div>
 
-  <div class="form-group">
-    <label  for="employees">Number of Employees</label>
-    <input required ngModel name="employees" #employees="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.employees">
-    <div class="alert" *ngIf="employees.touched && !employees.valid">Required</div>
-  </div>
+    <div class="form-group">
+      <label  for="employees">Number of Employees</label>
+      <input required ngModel name="employees" #employees="ngModel" type="text" class="form-control" [(ngModel)]="customerModel.employees">
+      <div class="alert" *ngIf="employees.touched && !employees.valid">Required</div>
+    </div>
 
-  <button [disabled]="customerForm.form.invalid" class="btn btn-primary">Submit</button>
-  <a routerLink="/customers" routerLinkActive="active">Cancel</a>
-</form>
+    <div class="form-buttons">
+      <button [disabled]="customerForm.form.invalid" class="btn btn-primary">Submit</button>
+      <a routerLink="/customers" routerLinkActive="active">Cancel</a>
+    </div>
+  </form>
+</div>
