@@ -1,21 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { customersData } from './customersData';
 import { Customer } from './customer.model';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom, map } from 'rxjs';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+
 @Injectable()
 export class CustomersService {
-  constructor(private http: HttpService) {}
+  constructor(
+    @InjectModel('Customer') private readonly customerModel: Model<Customer>,
+    private http: HttpService,
+  ) {}
 
-  customers: Customer[] = customersData;
-
-  getCustomers() {
-    return [...this.customers];
+  async getCustomers() {
+    //exec actually return a real promise
+    const customers = await this.customerModel.find().exec();
+    return customers;
   }
-  deleteCustomer(id: number) {
-    this.customers = this.customers.filter((customer, i) => i !== id);
+  async deleteCustomer(id: string) {
+    await this.customerModel.deleteOne({ _id: id });
   }
-  insertCustomer(
+  async insertCustomer(
     company: string,
     contact: string,
     telephone: string,
@@ -26,7 +31,7 @@ export class CustomersService {
     postal: string,
     employees: number,
   ) {
-    const newCustomer = new Customer(
+    const newCustomer = new this.customerModel({
       company,
       contact,
       telephone,
@@ -36,12 +41,12 @@ export class CustomersService {
       address,
       postal,
       employees,
-    );
-    this.customers.push(newCustomer);
-    return newCustomer;
+    });
+    const result = await newCustomer.save();
+    return result;
   }
-  updateCustomer(
-    id: number,
+  async updateCustomer(
+    id: string,
     company: string,
     contact: string,
     telephone: string,
@@ -52,23 +57,22 @@ export class CustomersService {
     postal: string,
     employees: number,
   ) {
-    const updateCustomer = new Customer(
-      company,
-      contact,
-      telephone,
-      city,
-      province,
-      country,
-      address,
-      postal,
-      employees,
-    );
-    this.customers[id] = updateCustomer;
-    return updateCustomer;
+    const updatedCustomer = await this.customerModel.findById(id);
+    updatedCustomer.company = company;
+    updatedCustomer.contact = contact;
+    updatedCustomer.telephone = telephone;
+    updatedCustomer.city = city;
+    updatedCustomer.province = province;
+    updatedCustomer.country = country;
+    updatedCustomer.address = address;
+    updatedCustomer.postal = postal;
+    updatedCustomer.employees = employees;
+    updatedCustomer.save();
   }
   async getRaining() {
     const rainycompanies = [];
-    for (const customer of this.customers) {
+    const allCustomers = await this.getCustomers();
+    for (const customer of allCustomers) {
       const weather = await lastValueFrom(
         this.http
           .get(
@@ -95,35 +99,35 @@ export class CustomersService {
     }
     return rainycompanies;
   }
-  async getTopFour() {
-    const mostEmployeesRain = [];
-    const topFourcompanies = this.customers
-      .sort((a, b) => b.employees - a.employees)
-      .slice(0, 4);
+  // async getTopFour() {
+  //   const mostEmployeesRain = [];
+  //   const topFourcompanies = this.customers
+  //     .sort((a, b) => b.employees - a.employees)
+  //     .slice(0, 4);
 
-    for (const customer of topFourcompanies) {
-      const weather = await lastValueFrom(
-        this.http
-          .get(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${customer.city},${customer.province},${customer.country}&appid=${process.env.apikeyweather}`,
-          )
-          .pipe(map((res) => res.data)),
-      );
+  //   for (const customer of topFourcompanies) {
+  //     const weather = await lastValueFrom(
+  //       this.http
+  //         .get(
+  //           `https://api.openweathermap.org/data/2.5/forecast?q=${customer.city},${customer.province},${customer.country}&appid=${process.env.apikeyweather}`,
+  //         )
+  //         .pipe(map((res) => res.data)),
+  //     );
 
-      let hasRainyDays = false;
-      for (const datapoint of weather.list) {
-        if (datapoint.weather[0].main === 'Rain') {
-          hasRainyDays = true;
-          break;
-        }
-      }
+  //     let hasRainyDays = false;
+  //     for (const datapoint of weather.list) {
+  //       if (datapoint.weather[0].main === 'Rain') {
+  //         hasRainyDays = true;
+  //         break;
+  //       }
+  //     }
 
-      mostEmployeesRain.push({
-        company: customer.company,
-        employees: customer.employees,
-        hasRainyDays: hasRainyDays,
-      });
-    }
-    return mostEmployeesRain;
-  }
+  //     mostEmployeesRain.push({
+  //       company: customer.company,
+  //       employees: customer.employees,
+  //       hasRainyDays: hasRainyDays,
+  //     });
+  //   }
+  //   return mostEmployeesRain;
+  // }
 }

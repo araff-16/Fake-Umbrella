@@ -1,11 +1,16 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
 import { CustomersController } from './customers.controller';
 import { CustomersService } from './customers.service';
 import { HttpModule } from '@nestjs/axios';
+import { CustomerSchema } from './customer.model';
 
 @Module({
-  imports: [HttpModule],
+  imports: [
+    HttpModule,
+    MongooseModule.forFeature([{ name: 'Customer', schema: CustomerSchema }]),
+  ],
   controllers: [CustomersController],
   providers: [CustomersService],
 })

@@ -52,7 +52,7 @@ export class CustomersController {
     @Body('employees') employees: number,
   ) {
     return this.customersService.updateCustomer(
-      parseInt(id),
+      id,
       company,
       contact,
       telephone,
@@ -72,7 +72,7 @@ export class CustomersController {
 
   @Delete(':id')
   deleteCustomer(@Param('id') id: string) {
-    return this.customersService.deleteCustomer(parseInt(id));
+    return this.customersService.deleteCustomer(id);
   }
 
   @Get('/raining')
@@ -80,8 +80,8 @@ export class CustomersController {
     return this.customersService.getRaining();
   }
 
-  @Get('/topfour')
-  getTopFour() {
-    return this.customersService.getTopFour();
-  }
+  // @Get('/topfour')
+  // getTopFour() {
+  //   return this.customersService.getTopFour();
+  // }
 }
