@@ -14,11 +14,12 @@
     text-decoration: none;
   }
   a:hover{
-    box-shadow: 3px 5px 5px rgb(38, 181, 178);
+    box-shadow: 3px 5px 5px #26b5b2;
   }
 
   img{
     height: 45px;
+    filter: invert(59%) sepia(28%) saturate(1125%) hue-rotate(130deg) brightness(98%) contrast(81%);
   }
   h6{
     margin: 0px;

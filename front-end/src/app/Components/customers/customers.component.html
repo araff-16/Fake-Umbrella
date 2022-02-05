@@ -1,15 +1,29 @@
-<div class="customers">
+<div class="customers-container">
   <div class="title-customer">
     <h2>Customers</h2>
     <div><a routerLink="/customerform" routerLinkActive="active">Add Customer</a></div>
   </div>
   <div *ngFor = "let customer of customers;" class="customer">
-    <h1>{{customer.company}}</h1>
-    <h4>Contact: {{customer.contact}}</h4>
-    <h4>Telephone: {{customer.telephone}}</h4>
-    <h4>Location: {{customer.address +", "+ customer.city+ ", " + customer.province + " " + customer.postal }} </h4>
-    <h4>Number of Employees: {{customer.employees}}</h4>
-    <button class="customerButton" (click)="deleteCustomer(customer._id)">Remove</button>
-    <button class="customerButton" (click)="updateCustomer(customer)">Update</button>
+    <header>
+      <h1>{{customer.company}}</h1>
+    </header>
+    <div class="customer-body">
+      <div>
+        <p><b>Contact:</b> {{customer.contact}}</p>
+        <p><b>Telephone:</b> {{customer.telephone}}</p>
+        <p><b>Number of Employees:</b>  {{customer.employees}}</p>
+      </div>
+
+      <div class="customer-location">
+        <p><b>Location:</b></p>
+        <p>{{customer.address +", "+ customer.city}}</p>
+        <p>{{customer.province + " " + customer.postal}}</p>
+      </div>
+
+      <div class="customer-buttons">
+        <button class="customerButton" (click)="deleteCustomer(customer._id)">Remove</button>
+        <button class="customerButton" (click)="updateCustomer(customer)">Update</button>
+      </div>
+    </div>
   </div>
 </div>
