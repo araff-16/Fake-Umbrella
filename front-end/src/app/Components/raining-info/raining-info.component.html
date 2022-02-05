@@ -1,19 +1,26 @@
-<div *ngIf="loading">
-  <h1>LOADING...</h1>
-</div>
-
-<div *ngFor = "let customer of rainingCustomers;" class="customer">
-  <div>
-    <h1>{{customer.company}}</h1>
-    <h4>Contact: {{customer.contact}}</h4>
-    <h4>Telephone: {{customer.telephone}}</h4>
+<div class="customers-container">
+  <div class="title-customer">
+    <h2>Customers Expecting Rain</h2>
   </div>
 
-  <div>
-    <h4>Raining Days</h4>
-    <ol >
-     <li *ngFor = "let day of customer.rainydays;">{{day}}</li>
-    </ol>
+  <div *ngIf="loading" class="loading">
+    <h1>LOADING...</h1>
   </div>
 
+  <div *ngFor = "let customer of rainingCustomers;" class="customer">
+    <header>
+      <h1>{{customer.company}}</h1>
+    </header>
+    <div class="customer-body">
+      <div>
+        <p><b>Contact:</b> {{customer.contact}}</p>
+        <p><b>Telephone:</b> {{customer.telephone}}</p>
+      </div>
+
+      <div>
+        <p><b>Days With Rain:</b></p>
+         <p *ngFor = "let day of customer.rainydays;">{{day}}</p>
+      </div>
+    </div>
+  </div>
 </div>
