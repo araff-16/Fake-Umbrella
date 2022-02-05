@@ -130,4 +130,34 @@ export class CustomersService {
   //   }
   //   return mostEmployeesRain;
   // }
+
+  async seedData(alldata: any[]) {
+    await this.customerModel.deleteMany();
+
+    for (const customer of alldata) {
+      const {
+        company,
+        contact,
+        telephone,
+        city,
+        province,
+        country,
+        address,
+        postal,
+        employees,
+      } = customer;
+      const newCustomer = new this.customerModel({
+        company,
+        contact,
+        telephone,
+        city,
+        province,
+        country,
+        address,
+        postal,
+        employees,
+      });
+      await newCustomer.save();
+    }
+  }
 }
