@@ -17,7 +17,6 @@ export class CustomersComponent implements OnInit {
     this.httpService.getRequest('http://localhost:3000/customers')
     .subscribe((data) => {
       this.customers = data
-      console.log(this.customers)
     })
   }
 
