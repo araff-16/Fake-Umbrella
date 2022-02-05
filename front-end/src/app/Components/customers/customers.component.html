@@ -3,13 +3,13 @@
     <h2>Customers</h2>
     <div><a routerLink="/customerform" routerLinkActive="active">Add Customer</a></div>
   </div>
-  <div *ngFor = "let customer of customers; let i = index;" class="customer">
+  <div *ngFor = "let customer of customers;" class="customer">
     <h1>{{customer.company}}</h1>
     <h4>Contact: {{customer.contact}}</h4>
     <h4>Telephone: {{customer.telephone}}</h4>
     <h4>Location: {{customer.address +", "+ customer.city+ ", " + customer.province + " " + customer.postal }} </h4>
     <h4>Number of Employees: {{customer.employees}}</h4>
-    <button class="delete" (click)="deleteCustomer(i)">Remove</button>
-    <a [routerLink]="['/customerform']" [state]="{customer: customer, id:i}" routerLinkActive="active">Update</a>
+    <button class="customerButton" (click)="deleteCustomer(customer._id)">Remove</button>
+    <button class="customerButton" (click)="updateCustomer(customer)">Update</button>
   </div>
 </div>

@@ -15,7 +15,7 @@ export class InputCustomerComponent implements OnInit {
 
   constructor(private httpService: HttpService, private router: Router) {
     if (this.router.getCurrentNavigation().extras.state) {
-      this.id = this.router.getCurrentNavigation().extras.state.id
+      this.id = this.router.getCurrentNavigation().extras.state.customer._id
       this.customerModel = { ...this.router.getCurrentNavigation().extras.state.customer }
     }
   }

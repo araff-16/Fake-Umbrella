@@ -1,4 +1,5 @@
 export class Customer {
+  _id: string;
   company: string;
   contact: string;
   telephone: string;
