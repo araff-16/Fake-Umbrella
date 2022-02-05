@@ -80,8 +80,8 @@ export class CustomersController {
     return this.customersService.getRaining();
   }
 
-  // @Get('/topfour')
-  // getTopFour() {
-  //   return this.customersService.getTopFour();
-  // }
+  @Get('/topfour')
+  getTopFour() {
+    return this.customersService.getTopFour();
+  }
 }

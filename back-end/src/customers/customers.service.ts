@@ -99,37 +99,38 @@ export class CustomersService {
     }
     return rainycompanies;
   }
-  // async getTopFour() {
-  //   const mostEmployeesRain = [];
-  //   const topFourcompanies = this.customers
-  //     .sort((a, b) => b.employees - a.employees)
-  //     .slice(0, 4);
+  async getTopFour() {
+    const mostEmployeesRain = [];
+    const allCustomers = await this.getCustomers();
+    const topFourcompanies = allCustomers
+      .sort((a, b) => b.employees - a.employees)
+      .slice(0, 4);
 
-  //   for (const customer of topFourcompanies) {
-  //     const weather = await lastValueFrom(
-  //       this.http
-  //         .get(
-  //           `https://api.openweathermap.org/data/2.5/forecast?q=${customer.city},${customer.province},${customer.country}&appid=${process.env.apikeyweather}`,
-  //         )
-  //         .pipe(map((res) => res.data)),
-  //     );
+    for (const customer of topFourcompanies) {
+      const weather = await lastValueFrom(
+        this.http
+          .get(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${customer.city},${customer.province},${customer.country}&appid=${process.env.apikeyweather}`,
+          )
+          .pipe(map((res) => res.data)),
+      );
 
-  //     let hasRainyDays = false;
-  //     for (const datapoint of weather.list) {
-  //       if (datapoint.weather[0].main === 'Rain') {
-  //         hasRainyDays = true;
-  //         break;
-  //       }
-  //     }
+      let hasRainyDays = false;
+      for (const datapoint of weather.list) {
+        if (datapoint.weather[0].main === 'Rain') {
+          hasRainyDays = true;
+          break;
+        }
+      }
 
-  //     mostEmployeesRain.push({
-  //       company: customer.company,
-  //       employees: customer.employees,
-  //       hasRainyDays: hasRainyDays,
-  //     });
-  //   }
-  //   return mostEmployeesRain;
-  // }
+      mostEmployeesRain.push({
+        company: customer.company,
+        employees: customer.employees,
+        hasRainyDays: hasRainyDays,
+      });
+    }
+    return mostEmployeesRain;
+  }
 
   async seedData(alldata: any[]) {
     await this.customerModel.deleteMany();
