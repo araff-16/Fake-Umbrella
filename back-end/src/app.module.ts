@@ -7,8 +7,6 @@ import { AppService } from './app.service';
 import { CustomersModule } from './customers/customers.module';
 //for using env
 import { ConfigModule } from '@nestjs/config';
-import { CustomerSeed } from './customers/seed/customer.seeds';
-import { CustomersService } from './customers/customers.service';
 
 @Module({
   imports: [
