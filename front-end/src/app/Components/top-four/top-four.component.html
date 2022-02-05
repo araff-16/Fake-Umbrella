@@ -1,5 +1,8 @@
 <div class="main-container">
-  <h1>Largest Employers</h1>
+  <h2>Largest Employers</h2>
+  <div *ngIf="loading" class="loading">
+    <h2>LOADING...</h2>
+  </div>
   <div class="chart-container">
     <div id="chart" *ngIf="!loading">
       <canvas baseChart
