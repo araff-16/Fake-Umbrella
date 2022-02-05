@@ -1,15 +1,16 @@
-<p>top-four works!</p>
-
-<div id="chart" *ngIf="!loading">
-  <canvas baseChart
-  [datasets]="barChartData"
-  [labels]="mbarChartLabels"
-  [options]="barChartOptions"
-  [colors]="barChartData"
-  [legend]="barChartLegend"
-  [chartType]="barChartType"
-  (chartHover)="chartHovered($event)"
-  (chartClick)="chartClicked($event)"
-  >
-</canvas>
+<div class="main-container">
+  <h1>Largest Employers</h1>
+  <div class="chart-container">
+    <div id="chart" *ngIf="!loading">
+      <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="mbarChartLabels"
+      [options]="barChartOptions"
+      [colors]="barChartData"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+      >
+    </canvas>
+    </div>
+  </div>
 </div>
