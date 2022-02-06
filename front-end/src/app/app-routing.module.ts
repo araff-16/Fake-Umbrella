@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { CustomersComponent } from './Components/customers/customers.component';
-import { InputCustomerComponent } from './Components/input-customer/input-customer.component';
-import { RainingInfoComponent } from './Components/raining-info/raining-info.component';
-import { TopFourComponent } from './Components/top-four/top-four.component';
+import { CustomersComponent } from "./Components/customers/customers.component";
+import { InputCustomerComponent } from "./Components/input-customer/input-customer.component";
+import { RainingInfoComponent } from "./Components/raining-info/raining-info.component";
+import { TopFourComponent } from "./Components/top-four/top-four.component";
 
 const routes: Routes = [
-  {path: "customers", component: CustomersComponent},
-  {path: "raininginfo", component: RainingInfoComponent},
-  {path: "topfour", component: TopFourComponent},
-  {path: "customerform", component: InputCustomerComponent}
+  { path: "customers", component: CustomersComponent },
+  { path: "raininginfo", component: RainingInfoComponent },
+  { path: "topfour", component: TopFourComponent },
+  { path: "customerform", component: InputCustomerComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

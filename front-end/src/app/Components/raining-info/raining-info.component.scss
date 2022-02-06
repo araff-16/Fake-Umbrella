@@ -1,32 +1,32 @@
-.customers-container{
+.customers-container {
   margin-left: 40px;
   margin-right: 40px;
 }
 
-.loading{
-  color:#26b5b2;
+.loading {
+  color: #26b5b2;
 }
 
-.customer{
+.customer {
   border: solid 3px rgb(82, 81, 81);
   border-radius: 15px;
   margin-bottom: 20px;
   padding: 25px;
 
-  header{
+  header {
     border-bottom: solid 2px rgb(82, 81, 81);
   }
-  h1{
+  h1 {
     margin: 0px;
   }
 }
 
-.customer-body{
+.customer-body {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.customer:hover{
+.customer:hover {
   box-shadow: 3px 5px 5px #26b5b2;
 }

@@ -1,11 +1,11 @@
-.nav{
+.nav {
   display: flex;
   flex-direction: row;
   align-items: center;
   border-bottom: solid 2px grey;
   padding: 15px;
 
-  a{
+  a {
     border: solid 3px black;
     padding: 10px;
     margin-left: 15px;
@@ -13,21 +13,22 @@
     color: black;
     text-decoration: none;
   }
-  a:hover{
+  a:hover {
     box-shadow: 3px 5px 5px #26b5b2;
   }
 
-  img{
+  img {
     height: 45px;
-    filter: invert(59%) sepia(28%) saturate(1125%) hue-rotate(130deg) brightness(98%) contrast(81%);
+    filter: invert(59%) sepia(28%) saturate(1125%) hue-rotate(130deg)
+      brightness(98%) contrast(81%);
   }
-  h6{
+  h6 {
     margin: 0px;
   }
-  h1{
+  h1 {
     margin: 0px;
   }
-  .nav-title{
+  .nav-title {
     margin-left: 10px;
   }
 }

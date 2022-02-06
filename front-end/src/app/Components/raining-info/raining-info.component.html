@@ -7,19 +7,19 @@
     <h2>LOADING...</h2>
   </div>
 
-  <div *ngFor = "let customer of rainingCustomers;" class="customer">
+  <div *ngFor="let customer of rainingCustomers" class="customer">
     <header>
-      <h1>{{customer.company}}</h1>
+      <h1>{{ customer.company }}</h1>
     </header>
     <div class="customer-body">
       <div>
-        <p><b>Contact:</b> {{customer.contact}}</p>
-        <p><b>Telephone:</b> {{customer.telephone}}</p>
+        <p><b>Contact:</b> {{ customer.contact }}</p>
+        <p><b>Telephone:</b> {{ customer.telephone }}</p>
       </div>
 
       <div>
         <p><b>Days With Rain:</b></p>
-         <p *ngFor = "let day of customer.rainydays;">{{day}}</p>
+        <p *ngFor="let day of customer.rainydays">{{ day }}</p>
       </div>
     </div>
   </div>

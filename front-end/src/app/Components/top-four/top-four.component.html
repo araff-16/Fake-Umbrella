@@ -5,15 +5,16 @@
   </div>
   <div class="chart-container">
     <div id="chart" *ngIf="!loading">
-      <canvas baseChart
-      [datasets]="barChartData"
-      [labels]="mbarChartLabels"
-      [options]="barChartOptions"
-      [colors]="barChartData"
-      [legend]="barChartLegend"
-      [chartType]="barChartType"
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="mbarChartLabels"
+        [options]="barChartOptions"
+        [colors]="barChartData"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
       >
-    </canvas>
+      </canvas>
     </div>
   </div>
 </div>
