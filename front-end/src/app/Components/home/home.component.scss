@@ -1,0 +1,15 @@
+.homepage {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    font-size: 50px;
+    margin: 5px;
+  }
+  img {
+    margin-top: 55px;
+    filter: invert(59%) sepia(28%) saturate(1125%) hue-rotate(130deg)
+      brightness(98%) contrast(81%);
+  }
+}
