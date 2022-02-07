@@ -36,6 +36,7 @@ Web app for Fake Umbrella to track customer information and determine which cust
     - `cd back-end`
     - `docker build . -t backend`
     - `docker run --rm -it -p 3000:3000 backend`
+  - Visit http://localhost:4200/
 - Running the project using local machine
   - Start-up front-end:
     - `cd front-end`
@@ -45,6 +46,7 @@ Web app for Fake Umbrella to track customer information and determine which cust
     - `cd back-end`
     - `npm install`
     - `npm start`
+  - Visit http://localhost:4200/
 
 ## Note
 
