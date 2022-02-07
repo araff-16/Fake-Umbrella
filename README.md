@@ -18,14 +18,14 @@ Web app for Fake Umbrella to track customer information and determine which cust
 
 - [Front-End](/front-end)
   - [Components](/front-end/src/app/Components)
-  - [Models](/Client/src/app/Models)
-  - [Services](/Client/src/app/Services)
+  - [Models](/front-end/src/app/Models)
+  - [Services](/front-end/src/app/Services)
 - [Back-End](/back-end)
 
 # Project Setup
 
 - [Fork](https://github.com/araff-16/Fake-Umbrella/fork) this repository and clone it to your local device.
-- Make an ENV file for the back-end following [.env.example](/back-end/.example).
+- Make an ENV file for the back-end following [.env.example](/back-end/.env.example).
 
 - Running the project using Docker Images
   - Start-up front-end:
@@ -52,4 +52,4 @@ To reset the database run `npx nestjs-command create:customers` while in the [ba
 
 ## Note
 
-Everytime the backend docker image is run the database will be reset. This can be prevented by removing `npx nestjs-command create:customers` from the [Dockerfile](/back-end/DockerFile).
+Everytime the backend docker image is run the database will be reset. This can be prevented by removing `npx nestjs-command create:customers` from the [Dockerfile](/back-end/Dockerfile).
