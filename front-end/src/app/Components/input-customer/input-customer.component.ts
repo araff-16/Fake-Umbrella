@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class InputCustomerComponent implements OnInit {
   customerModel = new Customer();
   id: string;
+  error = false;
 
   constructor(private httpService: HttpService, private router: Router) {
     if (this.router.getCurrentNavigation().extras.state) {
@@ -38,14 +39,24 @@ export class InputCustomerComponent implements OnInit {
           `http://localhost:3000/customers/${this.id}`,
           this.customerModel
         )
-        .subscribe(() => {
-          this.router.navigateByUrl("/customers");
+        .subscribe((good) => {
+          console.log(good);
+          if (good) {
+            this.router.navigateByUrl("/customers");
+          } else {
+            this.error = true;
+          }
         });
     } else {
       this.httpService
         .postRequest("http://localhost:3000/customers", this.customerModel)
-        .subscribe(() => {
-          this.router.navigateByUrl("/customers");
+        .subscribe((good) => {
+          console.log(good);
+          if (good) {
+            this.router.navigateByUrl("/customers");
+          } else {
+            this.error = true;
+          }
         });
     }
   }

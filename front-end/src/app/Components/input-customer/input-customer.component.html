@@ -1,6 +1,7 @@
 <div class="form-container">
   <h2 *ngIf="id === undefined">Add New Customer</h2>
   <h2 *ngIf="id !== undefined">Update Customer Info</h2>
+  <h3 *ngIf="error" class="error">Incorrect Customer Location</h3>
 
   <form #customerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
