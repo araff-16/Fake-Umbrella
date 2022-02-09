@@ -137,6 +137,7 @@
         type="text"
         class="form-control"
         [(ngModel)]="customerModel.employees"
+        (keypress)="numberOnly($event)"
       />
       <div class="alert" *ngIf="employees.touched && !employees.valid">
         Required
