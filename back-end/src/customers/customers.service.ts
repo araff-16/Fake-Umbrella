@@ -42,8 +42,14 @@ export class CustomersService {
       postal,
       employees,
     });
-    const result = await newCustomer.save();
-    return result;
+    const good = await this.checkdata(newCustomer);
+    console.log('hit');
+    if (good) {
+      await newCustomer.save();
+      return good;
+    } else {
+      return good;
+    }
   }
   async updateCustomer(
     id: string,
@@ -67,7 +73,14 @@ export class CustomersService {
     updatedCustomer.address = address;
     updatedCustomer.postal = postal;
     updatedCustomer.employees = employees;
-    updatedCustomer.save();
+
+    const good = await this.checkdata(updatedCustomer);
+    if (good) {
+      await updatedCustomer.save();
+      return good;
+    } else {
+      return good;
+    }
   }
   async getRaining() {
     const rainycompanies = [];
@@ -130,6 +143,21 @@ export class CustomersService {
       });
     }
     return mostEmployeesRain;
+  }
+
+  async checkdata(customer) {
+    try {
+      await lastValueFrom(
+        this.http
+          .get(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${customer.city},${customer.province},${customer.country}&appid=${process.env.apikeyweather}`,
+          )
+          .pipe(map((res) => res.data)),
+      );
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   async seedData(alldata: any[]) {
